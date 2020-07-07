@@ -1,8 +1,7 @@
 import React from 'react';
+import './homepage.styles.scss'
 
-export default HomePage;
-
-const HomePage = () => (
+export const HomePage = () => (
     <div className = 'homepage'>
         <div className = 'directory-menu'>
             <div className = 'menu-item'>
