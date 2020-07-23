@@ -1,13 +1,17 @@
 import React from 'react';
 
-import SHOP_DATA from './shop.data.js';
+import SHOP_DATA from './shop.data.jsx';
 
-class ShopPage extends React.Component {
+export class ShopPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             collections : SHOP_DATA
         }
+    }
+
+    render() {
+      return <div>SHOP PAGE</div>
     }
 }
