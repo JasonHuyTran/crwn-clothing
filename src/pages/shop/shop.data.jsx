@@ -242,8 +242,8 @@ const SHOP_DATA = [
             imageUrl: 'https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',
             price: 25
           }
-        ]
-      }
-    ]
+        ] 
+  }
+]
 
 export default SHOP_DATA;
