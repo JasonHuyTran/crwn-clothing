@@ -1,0 +1,22 @@
+import React from 'react';
+
+import './collection-item.styles.scss';
+
+//functional component since we don't need state
+const ColectionItem = ({id, name, price, imageUrl}) => (
+    <div className = 'colleciton-item'>
+        <div 
+            className = 'image'
+            stylke = {{
+                backgroundImage: `url(${imageUrl})`
+            }}
+        >
+        <div className = 'collection-footer'>
+            <span className='name'>{name}</span>
+            <span className='name'>{price}</span>
+        </div>
+        </div>
+    </div>
+);
+
+export default CollectionItem;
