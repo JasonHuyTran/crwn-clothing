@@ -3,11 +3,11 @@ import React from 'react';
 import './collection-item.styles.scss';
 
 //functional component since we don't need state
-const ColectionItem = ({id, name, price, imageUrl}) => (
-    <div className = 'colleciton-item'>
+const CollectionItem = ({id, name, price, imageUrl}) => (
+    <div className = 'collection-item'>
         <div 
             className = 'image'
-            stylke = {{
+            style = {{
                 backgroundImage: `url(${imageUrl})`
             }}
         >
