@@ -21,6 +21,7 @@ class SignIn extends React.Component {
         this.setState({email: '', password: ''})
     }
 
+    //when the user types into the box it allows the textbox to be updated. 
     handleChange = event => {
         const {value, name} = event.target;
 
@@ -42,7 +43,6 @@ class SignIn extends React.Component {
                         value = {this.state.email} 
                         required 
                     />
-                    <label>Email</label>
 
                     <FormInput
                         name = 'password' 
@@ -52,8 +52,6 @@ class SignIn extends React.Component {
                         label = 'password'
                         required 
                     />
-
-                    <label>Email</label>
 
                     <input type = "submit" value = "Submit"/>
                 </form>
