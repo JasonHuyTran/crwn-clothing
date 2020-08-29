@@ -15,6 +15,13 @@ const config = {
     measurementId: "G-24N8VT6GBJ"
   };
 
+export const createUserProfileDocument = async (userAuth, additionalDate) => {
+  //if the user is logged in
+  if(!userAuth) return;
+
+  console.log(firestore.doc('users/123fsdf'))
+}
+
 firebase.initializeApp(config);
 
 //export auth anywhere related to authenication 
@@ -24,6 +31,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
+
 //we want to always trigger the google popup whenever we use google auth provider for authenication 
 provider.setCustomParameters({prompt: 'select_account'});
 

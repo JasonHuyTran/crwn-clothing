@@ -9,7 +9,7 @@ import Header from './components/header/header.component.jsx';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component.jsx'
 //we wanna store the state of our user in our app 
 //wanna store the user data in the app state so we can use that information to pass in components that we need it 
-import { auth } from './firebase/firebase.utlis';
+import { auth, createUserProfileDocument } from './firebase/firebase.utlis';
 
 
 class App extends React.Component {
@@ -31,10 +31,8 @@ class App extends React.Component {
     //whenver any change occurs related o this application
     //firebase sends out a message that something has changed
     //they signed out or using some other services
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
-
-      console.log(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+      createUserProfileDocument(user);
     })
   }
 
