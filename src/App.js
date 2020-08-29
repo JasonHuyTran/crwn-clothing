@@ -31,8 +31,27 @@ class App extends React.Component {
     //whenver any change occurs related o this application
     //firebase sends out a message that something has changed
     //they signed out or using some other services
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      createUserProfileDocument(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if(userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        //if the snapshot has changed
+        //subscribe (listen)
+        //snapShot allows us to get property of that data using the .data method 
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              //spreading the rest of the data 
+              ...snapShot.data()
+            }
+          })
+        });
+      }
+      //there is no object or the user logs out 
+      else {
+        this.setState({currentUser:userAuth});
+      }
     });
   }
 
