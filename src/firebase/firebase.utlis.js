@@ -15,11 +15,37 @@ const config = {
     measurementId: "G-24N8VT6GBJ"
   };
 
-export const createUserProfileDocument = async (userAuth, additionalDate) => {
-  //if the user is logged in
+//allows us to get the userAuth object that we got back from authenication library and store inside of our database 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  //if the user is not logged in return
   if(!userAuth) return;
 
-  console.log(firestore.doc('users/123fsdf'))
+  //this is how you get a document reference
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+  //this is how you get a snapshot
+  const snapShot = await userRef.get();
+
+if(!snapShot.exists) {
+  //pulling displayName from userAuth
+  const {displayName, email} = userAuth;
+  const createdAt = new Date();
+
+  try {
+    await userRef.set({
+      displayName,
+      email,
+      createdAt,
+      ...additionalData
+    })
+  }
+  catch (error) {
+    console.log('error creating user', error.message);
+  }
+}
+
+
+  console.log(snapShot)
 }
 
 firebase.initializeApp(config);

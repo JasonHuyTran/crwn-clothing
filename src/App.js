@@ -33,7 +33,7 @@ class App extends React.Component {
     //they signed out or using some other services
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
       createUserProfileDocument(user);
-    })
+    });
   }
 
   //prevents memory leak
