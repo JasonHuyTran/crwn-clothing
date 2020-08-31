@@ -45,7 +45,7 @@ class App extends React.Component {
               //spreading the rest of the data 
               ...snapShot.data()
             }
-          })
+          });
         });
       }
       //there is no object or the user logs out 
