@@ -1,5 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+//higher order component
+//functions that take components as arguments 
+import {connect} from 'react-redux'
 
 import {auth} from '../../firebase/firebase.utlis'
 
@@ -30,4 +33,11 @@ const Header = ({currentUser}) => (
     </div>
 )
 
-export default Header;
+//gets state object which is the root reducer (top level root reducer)
+//we get state object and then user and the current user from user-reducer
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+
+//function that allows us to access the state 
+export default connect(mapStateToProps)(Header);
