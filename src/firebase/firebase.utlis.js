@@ -16,6 +16,7 @@ const config = {
   };
 
 //allows us to get the userAuth object that we got back from authenication library and store inside of our database 
+//this is ran everytime a user logs in 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   //if the user is not logged in return
   if(!userAuth) return;
@@ -27,6 +28,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   const snapShot = await userRef.get();
 
   //snapshot allows us to check if it exists 
+  //this is the part about creating the user. Checking if it exists in the database at all. 
   if(!snapShot.exists) {
     //pulling displayName from userAuth
     const {displayName, email} = userAuth;

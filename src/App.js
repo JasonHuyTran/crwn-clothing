@@ -28,10 +28,12 @@ class App extends React.Component {
   //firebase gives us 
   componentDidMount() {
     //this is an open subscription 
-    //whenver any change occurs related o this application
+    //whenever any change occurs related to this application
     //firebase sends out a message that something has changed
     //they signed out or using some other services
+    //runs when they log in or something 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      //if user is logged in through google?
       if(userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -46,6 +48,8 @@ class App extends React.Component {
               ...snapShot.data()
             }
           });
+
+          console.log(this.state);
         });
       }
       //there is no object or the user logs out 
