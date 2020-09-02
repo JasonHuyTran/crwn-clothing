@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
+import {connect} from 'react-redux'
 
 import './App.css';
 
@@ -10,16 +11,10 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 //we wanna store the state of our user in our app 
 //wanna store the user data in the app state so we can use that information to pass in components that we need it 
 import { auth, createUserProfileDocument } from './firebase/firebase.utlis';
+import {setCurrentUser} from './redux/user/user.actions'
 
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null
-    }
-  }
 
   unsubscribeFromAuth = null;
 
@@ -27,6 +22,8 @@ class App extends React.Component {
   //we want when the authenication state has changed
   //firebase gives us 
   componentDidMount() {
+    const {setCurrentUser} = this.props;
+
     //this is an open subscription 
     //whenever any change occurs related to this application
     //firebase sends out a message that something has changed
@@ -41,20 +38,16 @@ class App extends React.Component {
         //subscribe (listen)
         //snapShot allows us to get property of that data using the .data method 
         userRef.onSnapshot(snapShot => {
-          this.setState({
-            currentUser: {
+          setCurrentUser({
               id: snapShot.id,
               //spreading the rest of the data 
               ...snapShot.data()
-            }
           });
-
-          console.log(this.state);
         });
       }
       //there is no object or the user logs out 
       else {
-        this.setState({currentUser:userAuth});
+        setCurrentUser(userAuth);
       }
     });
   }
@@ -78,4 +71,15 @@ class App extends React.Component {
   }
 }
 
-export default App;
+//dispatch property 
+//return property where the prop name
+const mapDispatchToProps = dispatch => ({
+  //gets the user object
+  //dispatch the way for redux to know that whatever you're passing me is going to be an action object that i'm going to pass to every reducer
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+
+//using second argument of connect 
+//in app js we only set state but we don't actually do anything with state 
+export default connect(null, mapDispatchToProps)(App);
