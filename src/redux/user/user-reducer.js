@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     currentUser: null
 }
 
+//action
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         //if the action type is set current user 

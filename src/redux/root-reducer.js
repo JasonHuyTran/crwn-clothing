@@ -6,7 +6,8 @@ import {combineReducers} from 'redux';
 import userReducer from './user/user-reducer'
 
 //create root reducer object 
+//has properties like user 
 export default combineReducers({
-    //key goes to the actual reducer that we want 
+    //property of user that points to user reducer 
     user: userReducer
 });

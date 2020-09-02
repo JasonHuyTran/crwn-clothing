@@ -86,6 +86,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-//using second argument of connect 
+//using second argument of connect to set
 //in app js we only set state but we don't actually do anything with state 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

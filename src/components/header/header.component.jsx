@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 //higher order component
+//allows us to have access to redux 
 //functions that take components as arguments 
 import {connect} from 'react-redux'
 
@@ -33,10 +34,10 @@ const Header = ({currentUser}) => (
     </div>
 )
 
-//gets state object which is the root reducer (top level root reducer)
-//we get state object and then user and the current user from user-reducer
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+//allows us to get the state which is the root reducer
+const mapStateToProps = ({user}) => ({
+    //name of the property is the name was want to pass in.
+    currentUser: user.currentUser
 })
 
 //function that allows us to access the state 
