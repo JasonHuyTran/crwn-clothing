@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 //allows us to have access to redux 
 //functions that take components as arguments 
 import {connect} from 'react-redux'
+import CartIcon from '../cart-icon/cart-icon.component'
 
 import {auth} from '../../firebase/firebase.utlis'
 
@@ -30,6 +31,7 @@ const Header = ({currentUser}) => (
                 :
                 <Link className = 'option' to = '/signin'>SIGN IN</Link>
             }
+            <CartIcon />
         </div>
     </div>
 )
