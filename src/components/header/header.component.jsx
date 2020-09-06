@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 //functions that take components as arguments 
 import {connect} from 'react-redux'
 import CartIcon from '../cart-icon/cart-icon.component'
+import CartDropdown from '../cart-dropdown/cart-dropdown'
 
 import {auth} from '../../firebase/firebase.utlis'
 
@@ -17,6 +18,7 @@ const Header = ({currentUser}) => (
         <Link className = 'logo-container' to="/">
             <Logo className = 'logo' />
         </Link>
+
         <div className = 'options'>
             
             <Link className = 'option' to='/shop'>
@@ -33,6 +35,7 @@ const Header = ({currentUser}) => (
             }
             <CartIcon />
         </div>
+        <CartDropdown />
     </div>
 )
 
