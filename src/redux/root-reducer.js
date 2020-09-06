@@ -3,11 +3,13 @@
 
 import {combineReducers} from 'redux';
 
-import userReducer from './user/user-reducer'
+import userReducer from './user/user.reducer'
+import cartReducer from './cart/cart.reducer'
 
 //create root reducer object 
 //has properties like user 
 export default combineReducers({
     //property of user that points to user reducer 
-    user: userReducer
+    user: userReducer,
+    cart: cartReducer
 });

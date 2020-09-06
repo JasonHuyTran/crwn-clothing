@@ -13,7 +13,7 @@ import {ReactComponent as Logo} from '../../assets/crown.svg'
 
 import './header.styles.scss';
 
-const Header = ({currentUser}) => (
+const Header = ({currentUser, hidden}) => (
     <div className = 'header'>
         <Link className = 'logo-container' to="/">
             <Logo className = 'logo' />
@@ -35,14 +35,18 @@ const Header = ({currentUser}) => (
             }
             <CartIcon />
         </div>
-        <CartDropdown />
+        {
+            hidden ? null: <CartDropdown />
+        }
+
     </div>
 )
 
 //allows us to get the state which is the root reducer
-const mapStateToProps = ({user}) => ({
+const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
     //name of the property is the name was want to pass in.
-    currentUser: user.currentUser
+    currentUser,
+    hidden
 })
 
 //function that allows us to access the state 
