@@ -2,7 +2,9 @@ import CartActionTypes from './cart.types'
 
 const INITIAL_STATE = {
     //we wanna hide the drop down when we first load the page 
-    hidden: true 
+    hidden: true,
+    //empty array will be the default array 
+    cartItems: []
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -12,6 +14,12 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 hidden: !state.hidden //whatever the boolean value is, convert it to the opposite 
             };
+        case CartActionTypes.ADD_ITEM:
+            return {
+                ...state,
+                //old cart items + new action, deposit the item that is in the payload into the array
+                cartItems: [...state.cartItems, action.payload]
+            }
 
         default:
             return state;
