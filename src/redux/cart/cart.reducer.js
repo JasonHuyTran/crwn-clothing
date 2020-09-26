@@ -1,4 +1,5 @@
 import CartActionTypes from './cart.types'
+import {addItemToCart} from "./cart.utils"
 
 const INITIAL_STATE = {
     //we wanna hide the drop down when we first load the page 
@@ -18,7 +19,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 //old cart items + new action, deposit the item that is in the payload into the array
-                cartItems: [...state.cartItems, action.payload]
+                cartItems: addItemToCart(state.cartItems, action.payload) 
             }
 
         default:
