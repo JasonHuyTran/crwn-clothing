@@ -18,5 +18,6 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     }
   
     //if the cart item is not found 
+    //quantity gets attached so quantity isn't readded everytime once it is ran once 
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
   };
