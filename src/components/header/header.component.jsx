@@ -12,6 +12,9 @@ import {auth} from '../../firebase/firebase.utlis'
 import {ReactComponent as Logo} from '../../assets/crown.svg'
 
 import './header.styles.scss';
+import { createStructuredSelector } from 'reselect';
+import {selectCurrentUser} from '../../redux/user/user.selectors'
+import {selectCartHidden} from '../../redux/cart/cart.selector'
 
 const Header = ({currentUser, hidden}) => (
     <div className = 'header'>
@@ -43,10 +46,10 @@ const Header = ({currentUser, hidden}) => (
 )
 
 //allows us to get the state which is the root reducer
-const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
+const mapStateToProps = state => ({
     //name of the property is the name was want to pass in.
-    currentUser,
-    hidden
+    currentUser: selectCurrentUser(state),
+    hidden: selectCartHidden(state)
 })
 
 //function that allows us to access the state 
