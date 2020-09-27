@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import {toggleCartHidden} from '../../redux/cart/cart.action'
 import {selectCartItemsCount} from '../../redux/cart/cart.selector'
+import { createStructuredSelector } from 'reselect';
 
 import {ReactComponent as ShoppingIcon} from '../../assets/shopping-bag.svg'
 
@@ -21,10 +22,10 @@ const CartIcon = ({toggleCartHidden, itemCount}) => (
 //what we want to do if that if we sent in a two new object, we want to not rerender it 
 //this is obviously not good for performance 
 //espically if the state doesn't actually change 
-const mapStateToProps = state => ( {
+const mapStateToProps = createStructuredSelector( {
     //how we added up the values together 
     //3 cart items, the quantity were 1 2 and 3...
-    itemCount: selectCartItemsCount(state)
+    itemCount: selectCartItemsCount
 })
 
 const mapDispatchToProps = dispatch => ({

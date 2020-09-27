@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'
+import { createStructuredSelector } from 'reselect';
 
 import './App.css';
 
@@ -12,6 +13,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 //wanna store the user data in the app state so we can use that information to pass in components that we need it 
 import { auth, createUserProfileDocument } from './firebase/firebase.utlis';
 import {setCurrentUser} from './redux/user/user.actions'
+import {selectCurrentUser} from './redux/user/user.selectors'
 
 
 class App extends React.Component {
@@ -72,9 +74,9 @@ class App extends React.Component {
 }
 
 //off of our state
-const mapStateToProps = ({user}) => ({
+const mapStateToProps = createStructuredSelector({
   //destructing user Reducer
-  currentUser: user.currentUser
+  currentUser: selectCurrentUser
 })
 
 //dispatch property 

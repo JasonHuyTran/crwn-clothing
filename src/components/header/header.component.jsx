@@ -46,10 +46,10 @@ const Header = ({currentUser, hidden}) => (
 )
 
 //allows us to get the state which is the root reducer
-const mapStateToProps = state => ({
+const mapStateToProps = createStructuredSelector({
     //name of the property is the name was want to pass in.
-    currentUser: selectCurrentUser(state),
-    hidden: selectCartHidden(state)
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden
 })
 
 //function that allows us to access the state 
