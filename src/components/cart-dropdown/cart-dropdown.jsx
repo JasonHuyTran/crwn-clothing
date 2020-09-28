@@ -13,7 +13,7 @@ import './cart-dropdown.styles.scss';
 //cartItems.length conditional renders 
 // === is a strict evaluation versus == is a loose evaluation 
 // 0 or false or undefined or null or NaN or "" are all false 
-const CartDropdown = ({ cartItems }) => (
+const CartDropdown = ({ cartItems, history }) => (
   <div className='cart-dropdown'>
     <div className='cart-items'>
       {cartItems.length ? (
@@ -24,7 +24,7 @@ const CartDropdown = ({ cartItems }) => (
       <span className = 'empty-message'>Your cart is empty</span>
       )}
     </div>
-    <CustomButton>GO TO CHECKOUT</CustomButton>
+    <CustomButton onClick = {() => history.push('/checkout')}>GO TO CHECKOUT</CustomButton>
   </div>
 );
 
