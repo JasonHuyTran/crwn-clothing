@@ -8,12 +8,19 @@ import {selectCartItems} from '../../redux/cart/cart.selector'
 
 import './cart-dropdown.styles.scss';
 
+//cartItems.length conditional renders 
+// === is a strict evaluation versus == is a loose evaluation 
+// 0 or false or undefined or null or NaN or "" are all false 
 const CartDropdown = ({ cartItems }) => (
   <div className='cart-dropdown'>
     <div className='cart-items'>
-      {cartItems.map(cartItem => (
+      {cartItems.length ? (
+        cartItems.map(cartItem => (
         <CartItem key={cartItem.id} item={cartItem} />
-      ))}
+      ))
+      ) : (
+      <span className = 'empty-message'>Your cart is empty</span>
+      )}
     </div>
     <CustomButton>GO TO CHECKOUT</CustomButton>
   </div>
