@@ -41,6 +41,7 @@ const CheckoutPage = ({cartItems, total}) => (
     </div>
 )
 
+//pull the props off the state 
 const mapStateToProps = createStructuredSelector( {
     cartItems: selectCartItems,
     total: selectCartTotal
