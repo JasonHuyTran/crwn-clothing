@@ -1,5 +1,6 @@
 import CartActionTypes from './cart.types'
 import {addItemToCart} from "./cart.utils"
+import {removeItemFromCart} from './cart.utils'
 
 const INITIAL_STATE = {
     //we wanna hide the drop down when we first load the page 
@@ -28,6 +29,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 //if the cartitem id DOES match, then filter it 
                 //filter returns anythin that yields true 
                 cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
+            }
+        case CartActionTypes.REMOVE_ITEM:
+            return {
+                ...state,
+                cartItems: removeItemFromCart(state.cartItems, action.payload)
             }
 
         default:
