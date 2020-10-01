@@ -2,14 +2,25 @@
 //we want to break code in individual sections
 
 import {combineReducers} from 'redux';
+import {persistReducer} from 'redux-persist';
+
+//get the actual local storage object in our window object 
+import storage from 'redux-persist/lib/storage';
 
 import userReducer from './user/user.reducer'
 import cartReducer from './cart/cart.reducer'
 
-//create root reducer object 
-//has properties like user 
-export default combineReducers({
+const persistConfig = {
+    key: 'root',
+    storage, 
+    //the only reducer we want to persist is the cart 
+    whitelist: ['cart']
+}
+
+const rootReducer = combineReducers({
     //property of user that points to user reducer 
     user: userReducer,
     cart: cartReducer
 });
+
+export default persistReducer(persistConfig, rootReducer);
