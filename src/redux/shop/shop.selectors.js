@@ -7,8 +7,10 @@ export const selectCollections = createSelector(
   shop => shop.collections
 );
 
+//converts our object into an array 
 export const selectCollectionsForPreview = createSelector(
   [selectCollections],
+  //takes all the keys of an object that we pass into it and gives it in an array format 
   collections => Object.keys(collections).map(key => collections[key])
 );
 
