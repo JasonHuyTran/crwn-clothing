@@ -13,8 +13,7 @@ export const selectCollectionsForPreview = createSelector(
 );
 
 export const selectCollection = collectionUrlParam =>
-  createSelector([selectCollections], collections => {
-    return collections.find(collection => {
-      return collection.routeName === collectionUrlParam
-    })
-  });
+  createSelector(
+    [selectCollections],
+    collections => collections[collectionUrlParam]
+  );
