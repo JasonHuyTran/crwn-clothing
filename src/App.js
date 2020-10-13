@@ -18,44 +18,27 @@ import {selectCurrentUser} from './redux/user/user.selectors'
 
 
 class App extends React.Component {
-
   unsubscribeFromAuth = null;
 
-  //componentDidMount() is a one off thing 
-  //we want when the authenication state has changed
-  //firebase gives us 
   componentDidMount() {
-    const {setCurrentUser} = this.props;
+    const { setCurrentUser } = this.props;
 
-    //this is an open subscription 
-    //whenever any change occurs related to this application
-    //firebase sends out a message that something has changed
-    //they signed out or using some other services
-    //runs when they log in or something 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      //if user is logged in through google?
-      if(userAuth) {
+      if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
-        //if the snapshot has changed
-        //subscribe (listen)
-        //snapShot allows us to get property of that data using the .data method 
         userRef.onSnapshot(snapShot => {
           setCurrentUser({
-              id: snapShot.id,
-              //spreading the rest of the data 
-              ...snapShot.data()
+            id: snapShot.id,
+            ...snapShot.data()
           });
         });
       }
-      //there is no object or the user logs out 
-      else {
-        setCurrentUser(userAuth);
-      }
+
+      setCurrentUser(userAuth);
     });
   }
 
-  //prevents memory leak
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
@@ -85,23 +68,14 @@ class App extends React.Component {
   }
 }
 
-//off of our state
 const mapStateToProps = createStructuredSelector({
-  //destructing user Reducer
   currentUser: selectCurrentUser
-})
+});
 
-//dispatch property 
-//return property where the prop name
 const mapDispatchToProps = dispatch => ({
-  //gets the user object
-  //dispatch the way for redux to know that whatever you're passing me is going to be an action object that i'm going to pass to every reducer
   setCurrentUser: user => dispatch(setCurrentUser(user))
-})
+});
 
-
-//using second argument of connect to set
-//in app js we only set state but we don't actually do anything with state 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
