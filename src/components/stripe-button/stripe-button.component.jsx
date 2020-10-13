@@ -11,7 +11,7 @@ const StripeCheckoutButton = ({price}) => {
         alert('Payment Successful');
     }
 
-    //look at documentation to find all the fields here 
+    //look at documentation to find all the fields here d
     return (
         <StripeCheckout 
             label = 'Pay Now'
