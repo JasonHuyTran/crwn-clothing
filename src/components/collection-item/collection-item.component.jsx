@@ -6,7 +6,6 @@ import {addItem} from '../../redux/cart/cart.action'
 
 import './collection-item.styles.scss';
 
-//functional component since we don't need state
 const CollectionItem = ({item, addItem}) => {
     const {name, price, imageUrl} = item
 

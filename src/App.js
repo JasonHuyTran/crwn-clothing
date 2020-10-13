@@ -10,8 +10,6 @@ import ShopPage from './pages/shop/shop.component.jsx';
 import CheckoutPage from './pages/checkout/checkout.component'
 import Header from './components/header/header.component.jsx';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component.jsx'
-//we wanna store the state of our user in our app 
-//wanna store the user data in the app state so we can use that information to pass in components that we need it 
 import { auth, createUserProfileDocument } from './firebase/firebase.utlis';
 import {setCurrentUser} from './redux/user/user.actions'
 import {selectCurrentUser} from './redux/user/user.selectors'

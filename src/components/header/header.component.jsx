@@ -1,8 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-//higher order component
-//allows us to have access to redux 
-//functions that take components as arguments 
 import {connect} from 'react-redux'
 import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropdown from '../cart-dropdown/cart-dropdown'
@@ -45,12 +42,9 @@ const Header = ({currentUser, hidden}) => (
     </div>
 )
 
-//allows us to get the state which is the root reducer
 const mapStateToProps = createStructuredSelector({
-    //name of the property is the name was want to pass in.
     currentUser: selectCurrentUser,
     hidden: selectCartHidden
 })
 
-//function that allows us to access the state 
 export default connect(mapStateToProps)(Header);

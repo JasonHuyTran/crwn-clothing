@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-//for the history action to push it through? 
 import {withRouter} from 'react-router-dom';
 
 import CustomButton from '../custom-button/custom-button.component';
@@ -11,9 +10,7 @@ import {toggleCartHidden} from '../../redux/cart/cart.action'
 
 import './cart-dropdown.styles.scss';
 
-//cartItems.length conditional renders 
-// === is a strict evaluation versus == is a loose evaluation 
-// 0 or false or undefined or null or NaN or "" are all false 
+
 const CartDropdown = ({ cartItems, history, dispatch }) => (
   <div className='cart-dropdown'>
     <div className='cart-items'>

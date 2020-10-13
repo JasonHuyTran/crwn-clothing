@@ -16,15 +16,7 @@ const CartIcon = ({toggleCartHidden, itemCount}) => (
     </div>
 )
 
-//pull the state in and get the value
-//map state to props keep firing 
-//reduce is always doing an new value 
-//what we want to do if that if we sent in a two new object, we want to not rerender it 
-//this is obviously not good for performance 
-//espically if the state doesn't actually change 
 const mapStateToProps = createStructuredSelector( {
-    //how we added up the values together 
-    //3 cart items, the quantity were 1 2 and 3...
     itemCount: selectCartItemsCount
 })
 
