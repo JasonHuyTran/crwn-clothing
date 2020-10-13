@@ -65,10 +65,20 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
-          <Route exact path = '/' component = {HomePage}/>
-          <Route path = '/shop' component = {ShopPage}/>
-          <Route exact path = '/checkout' component = {CheckoutPage}/>
-          <Route exact path = '/signin' render={() => this.props.currentUser ? (<Redirect to = '/' />) : (<SignInAndSignUpPage/>)}/>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
         </Switch>
       </div>
     );
@@ -92,4 +102,8 @@ const mapDispatchToProps = dispatch => ({
 
 //using second argument of connect to set
 //in app js we only set state but we don't actually do anything with state 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
